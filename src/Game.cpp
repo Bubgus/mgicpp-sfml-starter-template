@@ -19,7 +19,7 @@ bool Game::init()
 
   return true;
 }
-
+//Comment to check if Githubdesktop branches work
 // Update runs after event polling and before rendering
 // use it for everything that needs to update between frames
 void Game::update(float dt)
