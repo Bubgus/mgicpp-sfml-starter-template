@@ -16,6 +16,20 @@ Game::~Game()
 // We call this once after the game class is instantiated
 bool Game::init()
 {
+	if (!background_texture.loadFromFile("../Data/Images/WhackaMole Worksheet/background.png"))
+	{
+		std::cout << ("error loading background");
+	}
+	background = sf::Sprite(background_texture);
+	if (!bird1_texture.loadFromFile("../Data/Images/WhackaMole Worksheet/bird.png"))
+	{
+		std::cout << ("error loading bird");
+	}
+	bird1 = sf::Sprite(bird1_texture);
+	bird1.setScale({0.25f, 0.25f });
+	bird1.setPosition({ 100.0f, 100.0f });
+	Title.setPosition({ 400.0f, 50.0f });
+
 
   return true;
 }
@@ -30,6 +44,9 @@ void Game::update(float dt)
 // Runs after update, use it to tell the window what to draw this frame
 void Game::render()
 {
+	window.draw(background);
+	window.draw(Title);
+	window.draw(bird1);	
 
 }
 

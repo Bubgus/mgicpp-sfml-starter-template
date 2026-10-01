@@ -17,8 +17,14 @@ class Game
   void keyPressed(const sf::Event::KeyPressed* event);
   void keyReleased(const sf::Event::KeyReleased* event);
 
- private:
+private:
   sf::RenderWindow& window;
+  sf::Font font{ "../Data/Fonts/open-sans/OpenSans-BoldItalic.ttf" };
+  sf::Text Title{font, "Whack a mole!"};
+  sf::Texture background_texture;
+  sf::Sprite background = sf::Sprite(background_texture);
+  sf::Texture bird1_texture;
+  sf::Sprite bird1 = sf::Sprite(bird1_texture);
   
 
 };
