@@ -38,15 +38,42 @@ bool Game::init()
 // use it for everything that needs to update between frames
 void Game::update(float dt)
 {
+	switch (gamestate)
+	{
+	case MENU:
+	{
+	}
+	case LEVEL:
+	{
+	}
 
+	default:
+		break;
+	}
 }
 
 // Runs after update, use it to tell the window what to draw this frame
 void Game::render()
-{
-	window.draw(background);
-	window.draw(Title);
-	window.draw(bird1);	
+{			
+	//draw the game objects
+	switch (gamestate)
+	{
+		case MENU:
+		{
+			window.draw(Title);
+			break;
+		}
+		case LEVEL:
+		{
+			window.draw(background);
+			window.draw(bird1);
+			break;
+		}
+
+	default:
+		break;
+	}
+
 
 }
 
@@ -78,12 +105,35 @@ void Game::mouseButtonReleased(const sf::Event::MouseButtonReleased* event)
 // Called by event polling when a KeyPressed event is found
 void Game::keyPressed(const sf::Event::KeyPressed* event)
 {
+	switch (gamestate)
+	{
+	case MENU:
+	{
+		if (event->scancode == sf::Keyboard::Scancode::Enter)
+		{
+			gamestate = LEVEL;
+		}
+		if (event->scancode == sf::Keyboard::Scancode::Escape)
+		{
+			window.close();
+		}
+		break;
+	}
+	case LEVEL:
+	{
+		if (event->scancode == sf::Keyboard::Scancode::Escape)
+		{
+			gamestate = MENU;
+		}
+		break;
+	}
+	}
+
 	// You can tell which button was pressed by the scancode to SFML's definitions of keyboard keys
 	if (event->scancode == sf::Keyboard::Scancode::W)
 	{
 		// W was pressed
 	}
-
 }
 
 // Called by event polling when a KeyReleased event is found

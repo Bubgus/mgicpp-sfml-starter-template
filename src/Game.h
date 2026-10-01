@@ -3,6 +3,13 @@
 #define SFML_GAME_H
 
 #include <SFML/Graphics.hpp>
+enum Gamestate 
+{
+	MENU,
+	LEVEL,
+	GAMEOVER,
+	WIN
+};
 
 class Game
 {
@@ -26,7 +33,7 @@ private:
   sf::Texture bird1_texture;
   sf::Sprite bird1 = sf::Sprite(bird1_texture);
   
-
+  Gamestate gamestate = MENU;
 };
 
 #endif // SFML_GAME_H
